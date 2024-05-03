@@ -27,15 +27,15 @@ export const getMe =
 
       dispatch(setUser(data));
 
-      // if navigatePath params is false/null/undefined, it will not executed
+      // jika parameter navigasiPath false/null/undifined, maka tidak akan dieksekusi
       if (navigatePath) navigate(navigatePath);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // If not valid token
+        // Jika token tidak valid
         if (error.response.status === 401) {
           dispatch(logout(null));
 
-          // if navigatePathError params is false/null/undefined, it will not executed
+          // jika parameter navigasiPathError false/null/undifined, maka tidak akan dieksekusi
           if (navigatePathError) navigate(navigatePathError);
           return;
         }
@@ -137,7 +137,7 @@ export const registerLoginWithGoogle =
       dispatch(setIsLoggedIn(true));
       dispatch(getMe(null, null, null));
       console.log("token", response.data.data);
-      // We will use navigate from react-router-dom by passing the argument because the useNavigate() can only used in component
+
       navigate("/homeuser", {
         state: {
           success: "Login dengan Google Berhasil",

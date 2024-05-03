@@ -33,6 +33,7 @@ const Login = () => {
       navigate(".", { replace: false });
     }
   }, []);
+
   const handleFacebookLogin = (response) => {
     console.log("Login Success!", response);
     if (response?.userID) {

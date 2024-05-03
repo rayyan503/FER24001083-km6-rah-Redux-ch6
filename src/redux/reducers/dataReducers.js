@@ -21,7 +21,6 @@ const heroSlicer = createSlice({
     },
     setFilterRole: (state, action) => {
       state.filterRole = action.payload;
-      console.log("setFilterRoleredu", setFilterRole);
     },
 
     setHeroName: (state, action) => {
