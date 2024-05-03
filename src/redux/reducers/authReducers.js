@@ -33,12 +33,6 @@ const loginSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    // setUserId: (state, action) => {
-    //   state.userID = action.payload;
-    // },
-    // setLogout: (state) => {
-    //   state.token = null;
-    // },
   },
 });
 
