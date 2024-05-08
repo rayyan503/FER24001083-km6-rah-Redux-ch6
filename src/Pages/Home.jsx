@@ -30,14 +30,14 @@ function Home() {
       <nav className="bg-gray-800 shadow-md">
         <div className="container mx-auto px-4 py-4 md:flex md:justify-between md:items-center">
           <div className="flex items-center justify-between">
-            <span className="text-white text-xl font-bold ml-8">
+            <span className="text-white text-xl font-bold ml-5">
               Mobile Legends
             </span>
             <button
               className="block md:hidden text-white"
               onClick={handleToggleNavbar}
             >
-              <img className="w-6 p6" src="/menu.png" alt="Menu" />
+              <img className="w-6 " src="/menu.png" alt="Menu" />
             </button>
           </div>
           <ul className={`${isOpen ? "block" : "hidden"} md:flex md:space-x-4`}>

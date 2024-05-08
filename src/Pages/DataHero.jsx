@@ -38,39 +38,48 @@ export default function DataHero() {
       <nav className="bg-gray-800 shadow-md">
         <div className="container mx-auto px-4 py-4 md:flex md:justify-between md:items-center">
           <div className="flex items-center justify-between">
-            <span className="text-white text-xl font-bold ml-8">
+            <span className="text-white text-xl font-bold ml-5">
               Mobile Legends
             </span>
             <button
               className="block md:hidden text-white"
               onClick={handleToggleNavbar}
             >
-              <img className="w-6 h-6 p-1" src="/menu.png" alt="Menu" />
+              <img className="w-6 " src="/menu.png" alt="Menu" />
             </button>
           </div>
           <ul
             className={`${
               isOpen ? "block" : "hidden"
-            } md:flex md:space-x-4 items-center`}
+            } md:flex md:space-x-4 items-center mt-4 md:mt-0`}
           >
             <li>
-              <Link to="/homeuser" className="text-white hover:text-gray-400">
+              <Link
+                to="/homeuser"
+                className="text-white hover:text-gray-400 block px-2 py-1"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-white hover:text-gray-400">
+              <Link
+                to="/about"
+                className="text-white hover:text-gray-400 block px-2 py-1"
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="text-white hover:text-gray-400">
-                Contact us
+              <Link
+                to="/contact"
+                className="text-white hover:text-gray-400 block px-2 py-1"
+              >
+                Contact Us
               </Link>
             </li>
             <li>
               <button
-                className="bg-red-500 text-cyan-50 px-6 py-2 mx-4 hover:bg-yellow-300 rounded"
+                className="bg-red-500 text-white px-4 py-2 mt-4 md:mt-0 rounded hover:bg-yellow-300"
                 onClick={handleLogout}
               >
                 Logout
