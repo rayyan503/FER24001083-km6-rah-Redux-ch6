@@ -29,6 +29,7 @@ export default function SearchHero() {
       // Jika belum login, alihkan ke halaman login
     }
   }, [isLoggedIn, navigate]);
+
   useEffect(() => {
     dispatch(searchDataHero(heroName, filterRole));
   }, [heroName, filterRole]);

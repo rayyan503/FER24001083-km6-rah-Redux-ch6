@@ -12,6 +12,8 @@ import DetailHero from "./Pages/DetailHero.jsx";
 import Login from "./Pages/Login.jsx";
 import HomeUser from "./Pages/HomeUser.jsx";
 import Register from "./Pages/Register.jsx";
+import About from "./Pages/About.jsx";
+import Contact from "./Pages/Contact.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
   {
     path: "/register/login",
     element: <Login />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
