@@ -30,7 +30,7 @@ function Home() {
       <nav className="bg-gray-800 shadow-md">
         <div className="container mx-auto px-4 py-4 md:flex md:justify-between md:items-center">
           <div className="flex items-center justify-between">
-            <span className="text-white text-xl font-bold ml-5">
+            <span className="text-white text-xl font-bold ml-2">
               Mobile Legends
             </span>
             <button

@@ -5,11 +5,13 @@ import storage from "redux-persist/lib/storage";
 import dataReducers from "./reducers/dataReducers";
 import navbarReducers from "./reducers/navbarReducers";
 import authReducers from "./reducers/authReducers";
+import modalReducers from "./reducers/modalReducers";
 
 const rootReducers = combineReducers({
   hero: dataReducers,
   navbar: navbarReducers,
   auth: authReducers,
+  modal: modalReducers,
 });
 
 const persistConfig = {
