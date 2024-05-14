@@ -122,7 +122,7 @@ export default function DataHero() {
           data.hero.hero.map((e) => (
             <div
               key={e?.hero_id}
-              className="bg-white rounded-lg p-4 shadow-md hover:scale-105"
+              className="bg-white rounded-lg p-4 shadow-md hover:scale-105 border"
             >
               <div className="font-3xl font-bold underline">{e?.hero_name}</div>
               <div className="font-md">Role: {e?.hero_role}</div>

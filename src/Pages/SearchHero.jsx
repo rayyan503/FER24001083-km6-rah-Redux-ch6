@@ -223,7 +223,7 @@ export default function SearchHero() {
                     state: { hero_id: datahero.hero_id },
                   });
                 }}
-                className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:scale-105"
+                className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:scale-105 border"
               >
                 <h2 className="text-xl font-bold mb-2 underline">
                   {datahero.hero_name}
