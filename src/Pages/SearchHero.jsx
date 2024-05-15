@@ -5,7 +5,7 @@ import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleNavbar } from "../redux/reducers/navbarReducers";
-import { FaUser, FaChevronDown, FaSignOutAlt } from "react-icons/fa";
+import { FaChevronDown, FaSignOutAlt, FaUser } from "react-icons/fa";
 import {
   setFilterRole,
   setHeroName,
@@ -13,9 +13,11 @@ import {
 } from "../redux/reducers/dataReducers";
 import { searchDataHero } from "../redux/actions/dataActions";
 import { logout } from "../redux/actions/authActions";
+import dayjs from "dayjs";
 import {
   setShowDropdown,
   setShowLogoutModal,
+  setProfileModalOpen,
 } from "../redux/reducers/modalReducers";
 
 export default function SearchHero() {
@@ -27,7 +29,9 @@ export default function SearchHero() {
     (state) => state.hero
   );
   const isOpen = useSelector((state) => state.navbar.isOpen);
-  const { showLogoutModal, showDropdown } = useSelector((state) => state.modal);
+  const { showLogoutModal, showDropdown, profileModalOpen } = useSelector(
+    (state) => state.modal
+  );
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -100,10 +104,19 @@ export default function SearchHero() {
     dispatch(logout(navigate));
     dispatch(setShowLogoutModal()); // Close modal after logout
     dispatch(setShowDropdown(false));
+    dispatch(setProfileModalOpen(false));
   };
 
   const handleDropdownToggle = () => {
     dispatch(setShowDropdown());
+  };
+
+  const handleProfileModal = () => {
+    dispatch(setProfileModalOpen(true));
+  };
+
+  const getInitial = (email) => {
+    return email ? email.charAt(0).toUpperCase() : "";
   };
 
   return (
@@ -157,12 +170,21 @@ export default function SearchHero() {
                   className="text-white px-2 py-1 hover:text-blue-300 hover:scale-105 flex items-center"
                   onClick={handleDropdownToggle}
                 >
-                  <FaUser className="mr-2" />
+                  <div className="rounded-full bg-blue-500 text-white w-8 h-8 flex items-center justify-center mr-2">
+                    {getInitial(user?.email)}
+                  </div>
                   {user?.email}
                   <FaChevronDown className="ml-2" />
                 </button>
                 {showDropdown && (
-                  <div className="absolute  mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                  <div className="absolute  mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 ml-2">
+                    <button
+                      className="flex px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left items-center "
+                      onClick={handleProfileModal}
+                    >
+                      <FaUser className="mr-2" />
+                      Profile
+                    </button>
                     <button
                       className="flex px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left items-center "
                       onClick={() => dispatch(setShowLogoutModal())}
@@ -253,6 +275,36 @@ export default function SearchHero() {
             ))}
         </div>
       </div>
+
+      {/* Modal Profile */}
+      {profileModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+          <div className="bg-white p-8 rounded-md ">
+            <div className="rounded-full bg-blue-500 text-white w-8 h-8 flex items-center justify-center mr-2 mx-24 mb-2">
+              {getInitial(user?.email)}
+            </div>
+            <p className="text-lg mb-4">Informasi Profil Pengguna</p>
+            <p>
+              <strong>Nama:</strong> {user?.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {user?.email}
+            </p>
+            <p>
+              <strong>Created At:</strong>{" "}
+              {user?.createdAt
+                ? dayjs(user.createdAt).format("DD/MM/YYYY")
+                : "Tidak ada informasi"}
+            </p>
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-5"
+              onClick={() => dispatch(setProfileModalOpen(false))}
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Modal Logout */}
       {showLogoutModal && (
