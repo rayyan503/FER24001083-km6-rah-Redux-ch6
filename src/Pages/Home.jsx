@@ -114,6 +114,10 @@ function Home() {
           />
         </div>
       </div>
+
+      <footer className="bg-gray-800 text-white text-center py-4 mt-32">
+        <p>&copy; 2024 Mobile Legends</p>
+      </footer>
     </>
   );
 }
